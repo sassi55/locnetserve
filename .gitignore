@@ -1,0 +1,3 @@
+bin/mysql/bin/mysqld.exe
+bin/mysql/lib/mysqlclient.lib
+bin/mysql/lib/libjitexecutor.dll

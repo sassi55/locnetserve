@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="dashboard_title">LocNetServe - Dashboard</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Styles & Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+    <!-- Language Selector -->
+
+
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <a href="#" class="logo-container" title="LocNetServe Dashboard">
+                <img src="http://localhost/dashboard/assets/logo1.png" alt="LocNetServe" class="logo-img" id="server-logo">
+            </a>
+            <div class="logo">
+                <h1 data-translate="app_name">LocNetServe</h1>
+            </div>    <div class="language-selector">
+        <select id="language-select">
+    <option value="en">English</option>
+    <option value="fr">Français</option>
+    <option value="es">Español</option>
+  </select>
+    </div>
+            <a href="#" class="nav-item active">
+                <i class="fas fa-tachometer-alt"></i>
+                <span data-translate="dashboard">Dashboard</span>
+            </a>
+            <a href="http://localhost/phpmyadmin" class="nav-item" target="_blank">
+                <i class="fas fa-database"></i>
+                <span data-translate="links.phpmyadmin">phpMyAdmin</span>
+            </a>
+            <a href="http://localhost/" class="nav-item" target="_blank">
+                <i class="fas fa-globe"></i>
+                <span data-translate="links.localhost">Localhost</span>
+            </a>
+            <a href="http://localhost/info.php" class="nav-item" target="_blank">
+                <i class="fas fa-info-circle"></i>
+                <span data-translate="links.phpinfo">PHP Info</span>
+            </a>
+            <a href="#" class="nav-item" onclick="showVhostModal(); return false;">
+                <i class="fas fa-server"></i>
+                <span data-translate="menu.vhost_manager">Virtual Host Manager</span>
+            </a>
+        </div>
+        
+        <div class="main-content">
+            <div class="header">
+                <h2 data-translate="dashboard_title">LocNetServe Dashboard</h2>
+                <button class="refresh-btn" id="refresh-btn">
+                    <i class="fas fa-sync-alt"></i> 
+                    <span data-translate="refresh">Refresh</span>
+                </button>
+            </div>
+            
+            <div class="stats-grid" id="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-card-header">
+                        <div class="stat-card-title" data-translate="loading">Loading...</div>
+                        <div class="stat-card-icon bg-primary">
+                            <i class="fas fa-spinner fa-spin"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card-value">0%</div>
+                    <div class="stat-card-label" data-translate="please_wait">Please wait</div>
+                </div>
+            </div>
+            
+            <h3 data-translate="services_title">Services</h3>
+            <div class="services-grid" id="services-grid">
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-title" data-translate="loading">Loading...</div>
+                        <div class="service-status status-stopped">
+                            <span data-translate="menu.state.ready">Ready</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="projects-grid" id="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-title" data-translate="loading">Loading...</div>
+                        <i class="fas fa-spinner fa-spin" style="color: #f59e0b;"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-header">
+                <h3 data-translate="vhosts">Virtual Hosts</h3>
+                <button class="btn btn-primary" id="add-vhost-btn">
+                    <i class="fas fa-plus"></i> 
+                    <span data-translate="add_vhost">Add Virtual Host</span>
+                </button>
+            </div>
+            
+            <div class="vhosts-grid" id="vhosts-grid">
+                <div class="vhost-card">
+                    <div class="vhost-header">
+                        <div class="vhost-title" data-translate="loading">Loading...</div>
+                        <i class="fas fa-spinner fa-spin" style="color: #f59e0b;"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="vhosts-controls">
+                <button class="btn btn-info" id="vhost-status-btn" onclick="checkVHostManagerStatus(); return false;">
+                    <i class="fas fa-info-circle"></i> 
+                    <span data-translate="menu.main.status">Status</span>
+                </button>
+                <button class="btn btn-warning" onclick="startVHostManager(); return false;">
+                    <i class="fas fa-play"></i> 
+                    <span data-translate="menu.main.restart">Restart</span>
+                </button>
+            </div>
+
+            <!-- Virtual Host Modal -->
+            <div class="modal" id="vhost-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 data-translate="add_vhost">Add Virtual Host</h3>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <form id="vhost-form">
+                            <div class="form-group">
+                                <label for="vhost-name" data-translate="vhost_name_label">Virtual Host Name</label>
+                                <input type="text" id="vhost-name" required 
+                                       placeholder="ex: myproject.local">
+                            </div>
+                            <div class="form-group">
+                                <label for="vhost-path" data-translate="vhost_path_label">Project Path</label>
+                                <div class="path-input-group">
+                                    <input type="text" id="vhost-path" readonly required
+                                           placeholder="ex: C:\MyServer\www\myproject">
+                                    <button type="button" id="browse-btn" class="btn btn-secondary">
+                                        <i class="fas fa-folder-open"></i>
+                                        <span data-translate="browse">Browse</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary" id="cancel-btn" data-translate="cancel">
+                                    Cancel
+                                </button>
+                                <button type="submit" class="btn btn-primary" id="submit-btn" data-translate="create">
+                                    Create
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/dashboard.js"></script>
+    <script>
+	
+        
+        function initLogo() {
+            const logo = document.getElementById('server-logo');
+            
+            
+            logo.onerror = function() {
+                console.log('Logo not found, using text fallback');
+                const logoContainer = document.querySelector('.logo-container');
+                logoContainer.innerHTML = '<span style="color: white; font-weight: 600; font-size: 18px;">LocNetServe</span>';
+                logoContainer.style.justifyContent = 'center';
+            };
+            
+            // Effet au survol
+            logo.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+            });
+            
+            logo.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+            
+           
+            logo.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.reload();
+            });
+        }
+
+        
+        function startVHostManager() {
+            fetch('scripts/start_vhost_manager.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showNotification('Manager started successfully', 'success');
+                        setTimeout(() => {
+                            if (typeof loadVhosts === 'function') {
+                                loadVhosts();
+                            }
+                        }, 2000);
+                    } else {
+                        showNotification('Error: ' + data.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    showNotification('Communication error', 'error');
+                });
+        }
+
+        // Vérifier l'état du gestionnaire
+        async function checkVHostManagerStatus() {
+            try {
+                const response = await fetch('check_vhost_manager.php');
+                const result = await response.json();
+                
+                if (result.running) {
+                    showNotification('Virtual host manager is running', 'success');
+                } else {
+                    showNotification('Virtual host manager is stopped', 'warning');
+                }
+            } catch (error) {
+                console.error('Status check error:', error);
+                showNotification('Communication error', 'error');
+            }
+        }
+        
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            initLogo();
+            
+            
+            const languageSelect = document.getElementById('language-select');
+            if (languageSelect) {
+                languageSelect.addEventListener('change', async function(e) {
+                    const newLanguage = e.target.value;
+                    try {
+                        const response = await fetch(`scripts/lang.php?action=set_language&lang=${newLanguage}`);
+                        const result = await response.json();
+                        
+                        if (result.success) {
+                            window.location.reload();
+                        } else {
+                            showNotification('Error changing language', 'error');
+                        }
+                    } catch (error) {
+                        console.error('Language change error:', error);
+                        showNotification('Error changing language', 'error');
+                    }
+                });
+            }
+        });
+    </script>
+	
+</body>
+</html>

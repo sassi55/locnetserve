@@ -1,0 +1,7 @@
+[mysqld]
+basedir=C:/MyServer/bin/mysql
+datadir=C:/MyServer/bin/mysql/data
+port=3306
+bind-address=127.0.0.1
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+

@@ -1,0 +1,23 @@
+[20250920005103] info: Gestionnaire d'hôtes virtuels démarré
+[20250920011758] info: Fichier de configuration créé: C:\MyServer\bin\apache\conf\extra\vhosts\dev.local.conf
+[20250920011758] success: Hôte virtuel créé: dev.local
+[20250920014343] info: Fichier de configuration créé: C:\MyServer\bin\apache\conf\extra\vhosts\myserve.conf
+[20250920014343] success: Hôte virtuel créé: myserve
+[20250920014440] error: Fichier de configuration introuvable: C:\MyServer\bin\apache\conf\extra\vhosts\dev.local.localhost.conf
+[20250920014440] error: Erreur suppression hôte: dev.local.localhost
+[20250920020419] error: Fichier de configuration introuvable: C:\MyServer\bin\apache\conf\extra\vhosts\dev.local.localhost.conf
+[20250920020419] error: Erreur suppression hôte: dev.local.localhost
+[20250920020801] info: Fichier de configuration supprimé: C:\MyServer\bin\apache\conf\extra\vhosts\dev.local.conf
+[20250920020801] success: Hôte virtuel supprimé: dev.local
+[20250920020855] info: Fichier de configuration supprimé: C:\MyServer\bin\apache\conf\extra\vhosts\myserve.conf
+[20250920020855] success: Hôte virtuel supprimé: myserve
+[20250920022510] info: Fichier de configuration créé: C:\MyServer\bin\apache\conf\extra\vhosts\monsite.conf
+[20250920022510] success: Hôte virtuel créé: monsite
+[20250920022710] info: Fichier de configuration supprimé: C:\MyServer\bin\apache\conf\extra\vhosts\monsite.conf
+[20250920022710] success: Hôte virtuel supprimé: monsite
+[20251006231331] info: Gestionnaire d'hôtes virtuels démarré
+[20251012005721] info: Gestionnaire d'hôtes virtuels démarré
+[20251012185530] info: Gestionnaire d'hôtes virtuels démarré
+[20251018231208] info: Gestionnaire d'hôtes virtuels démarré
+[20251019182739] info: Fichier de configuration créé: C:\MyServer\bin\apache\conf\extra\vhosts\p2.conf
+[20251019182739] success: Hôte virtuel créé: p2

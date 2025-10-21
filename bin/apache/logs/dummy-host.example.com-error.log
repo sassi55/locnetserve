@@ -1,0 +1,10 @@
+[Mon Aug 04 18:20:11.308917 2025] [authz_core:error] [pid 9348:tid 1192] [client ::1:56216] AH01630: client denied by server configuration: C:/MyServer/apache/docs
+[Mon Aug 04 18:25:47.657801 2025] [authz_core:error] [pid 9348:tid 1196] [client ::1:56220] AH01630: client denied by server configuration: C:/MyServer/apache/docs
+[Mon Aug 04 18:25:48.898334 2025] [authz_core:error] [pid 9348:tid 1196] [client ::1:56220] AH01630: client denied by server configuration: C:/MyServer/apache/docs
+[Mon Aug 04 18:25:50.482574 2025] [authz_core:error] [pid 9348:tid 1196] [client ::1:56220] AH01630: client denied by server configuration: C:/MyServer/apache/docs
+[Mon Aug 04 18:28:41.415574 2025] [authz_core:error] [pid 9348:tid 1192] [client ::1:56226] AH01630: client denied by server configuration: C:/MyServer/apache/docs
+[Mon Aug 04 18:28:44.339606 2025] [authz_core:error] [pid 9348:tid 1192] [client ::1:56226] AH01630: client denied by server configuration: C:/MyServer/apache/docs
+[Mon Aug 04 18:30:34.516549 2025] [authz_core:error] [pid 9348:tid 1196] [client ::1:56228] AH01630: client denied by server configuration: C:/MyServer/apache/docs
+[Mon Aug 04 18:30:35.732142 2025] [authz_core:error] [pid 9348:tid 1196] [client ::1:56228] AH01630: client denied by server configuration: C:/MyServer/apache/docs
+[Mon Aug 04 18:30:40.316744 2025] [authz_core:error] [pid 9348:tid 1196] [client ::1:56228] AH01630: client denied by server configuration: C:/MyServer/apache/docs
+[Mon Aug 04 18:32:55.751871 2025] [authz_core:error] [pid 15148:tid 1196] [client ::1:56231] AH01630: client denied by server configuration: C:/MyServer/apache/docs

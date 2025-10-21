@@ -1,0 +1,14 @@
+[2025-10-18 23:12:08] === Gestionnaire d'hôtes virtuels démarré ===
+[2025-10-19 18:27:38] Commandes à traiter: [
+    {
+        "type": "create_vhost",
+        "name": "p2",
+        "path": "C:\\MyServer\\www\\project2",
+        "timestamp": 1760894856
+    }
+]
+[2025-10-19 18:27:39] Traitement de 1 commande(s)
+[2025-10-19 18:27:39] Traitement commande: create_vhost - p2
+[2025-10-19 18:27:39] Hôte virtuel créé avec succès: p2
+[2025-10-19 18:27:39] Demande de redémarrage Apache envoyée à LocNetServe
+[2025-10-19 18:27:39] Commandes traitées avec succès - fichier supprimé

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GeneralSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ConfigureAsService>true</ConfigureAsService>
+  <EnterpriseFirewallEnabled>false</EnterpriseFirewallEnabled>
+  <EnterpriseFirewallComponentEnabled>false</EnterpriseFirewallComponentEnabled>
+  <IniDirectory>C:\ProgramData\MySQL\MySQL Server 9.4\</IniDirectory>
+  <ServerInstallationType>Developer</ServerInstallationType>
+</GeneralSettings>

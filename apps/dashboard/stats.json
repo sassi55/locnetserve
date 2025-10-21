@@ -1,0 +1,42 @@
+{
+  "apache":{
+    "cpu":"0",
+    "memory":"0",
+    "requests":"0",
+    "status":"stopped",
+    "uptime":"00:00:00"
+  },
+  "mysql":{
+    "connections":"0",
+    "cpu":"0",
+    "memory":"0",
+    "status":"stopped",
+    "uptime":"00:00:00"
+  },
+  "projects":{
+    "project1":{
+      "files":"1",
+      "last_modified":"2025-10-13 08:51:06",
+      "name":"project1",
+      "size":"0.0"
+    },
+    "project2":{
+      "files":"1",
+      "last_modified":"2025-10-13 08:51:57",
+      "name":"project2",
+      "size":"0.0"
+    },
+    "test":{
+      "files":"1",
+      "last_modified":"2025-09-20 01:16:38",
+      "name":"test",
+      "size":"0.0"
+    }
+  },
+  "system":{
+    "cpu_usage":"2.0",
+    "disk_usage":"54.9",
+    "memory_usage":"63.6",
+    "network_usage":"125.4"
+  }
+}

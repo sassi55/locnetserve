@@ -1,0 +1,94 @@
+{
+  "commands": {
+    "help": {
+	"help": "Show LocNetServe Help"
+	
+	},
+    "core": {
+      "-v": "Show LocNetServe version",
+      "status": "Show status of services (Apache, MySQL, PHP)",
+      "start": "Start LocNetServe main server",
+      "stop": "Stop LocNetServe main server",
+      "all start": "Start Apache and MySQL together",
+      "all stop": "Stop all services",
+      "all restart": "Restart Apache and MySQL",
+      "exit": "Exit the terminal",
+      "lang": "Get current language",
+      "lang <code>": "Set language (en, fr, es)"
+    },
+    "apache": {
+      "apache start": "Start Apache service",
+      "apache stop": "Stop Apache service",
+      "apache restart": "Restart Apache service",
+      "apache status": "Check Apache Status",
+      "apache log": "Open Apache log folder",
+      "apache conf": "Open httpd.conf configuration file",
+      "apache vhosts": "Open VirtualHosts configuration file",
+      "apache ports": "List Apache listening ports",
+      "apache version": "Show Apache version",
+      "apache config check": "Check Apache configuration for errors"
+    },
+    "mysql": {
+      "mysql start": "Start MySQL service",
+      "mysql stop": "Stop MySQL service",
+      "mysql restart": "Restart MySQL service",
+      "mysql status": "Check MySQL Status",
+	  "mysql ports": "List MySQL listening ports",
+      "mysql shell": "Open MySQL interactive shell",
+      "mysql export <db> [output_file.sql]": "Export a database to SQL file",
+      "mysql import <db> <file.sql>": "Import SQL file into a database",
+      "mysql create <db_name>": "Create a new database",
+      "mysql drop <db_name>": "Drop an old database",
+      "mysql data list": "List all MySQL databases",
+      "mysql users": "List all MySQL users with host information",
+	  "mysql users info <username>": "Show detailed information about a specific user",
+      "mysql user add <username> <password>": "Create a new MySQL user with a password",
+      "mysql user del <username> ": "Remove a MySQL user",
+      "mysql version": "Show MySQL version",
+	  "mysql health": "Run a health check for MySQL service"
+    },
+    "php": {
+      "php version": "Show PHP version",
+      "php info": "Open phpinfo() in browser",
+      "php ini": "Open php.ini configuration file",
+      "php ext list": "List all PHP extensions with status",
+      "php ext enable <ext>": "Enable a PHP extension",
+      "php ext disable <ext>": "Disable a PHP extension",
+      "php ext available": "List available disabled extensions",
+      "php update": "Check PHP update",
+      "php composer <cmd>": "Run composer command (install, update, etc.)"
+    },
+    "laravel": {
+      "laravel serve": "Run Laravel local development server",
+      "laravel migrate": "Run Laravel migrations",
+      "laravel cache": "Clear Laravel cache",
+      "laravel route": "List Laravel routes",
+      "laravel tinker": "Open Laravel tinker shell"
+    },
+    "update": {
+      "update locnetserve": "Check if new versions are available and update online",
+      "update apache <zip>": "Update Apache from ZIP file",
+      "update mysql <zip>": "Update MySQL from ZIP file",
+      "update php <zip>": "Update PHP from ZIP file",
+      "update check": "Check if new versions are available"
+    },
+    "utils": {
+      "-u open www": "Open www project root folder",
+      "-u open localhost": "Open localhost",
+      "-u open dashboard": "Open local dashboard in browser",
+      "-u config edit": "Open config.json for editing",
+      "-u show ports": "List all active ports",
+      "-u ssl gen": "Generate self-signed SSL certificate for localhost",
+      "-u backup all": "Backup MySQL + WWW + configs",
+      "-u backup mysql": "Backup MySQL databases",
+      "-u backup config": "Backup configuration files",
+      "-u backup projects": "Backup projects in www",
+      "-u backup list": "List available backups",
+      "-u backup restore <zip>": "Restore from a backup"
+    },
+	"vhosts":{
+	"-vh open <vhost>": "open vhost",
+	"-vh show": "List all vhosts"
+	}
+  }
+}
