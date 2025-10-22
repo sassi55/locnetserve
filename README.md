@@ -1,3 +1,5 @@
+<meta name="description" content="LocNetServe: Complete local web server for Windows with Apache, MySQL, PHP stack. Real-time dashboard, virtual host manager, and multi-interface control. Perfect alternative to XAMPP and WAMP.">
+<meta name="keywords" content="local web server, localhost, phpmyadmin, apache, mysql, php, web development, windows web server, xampp alternative, development environment">
 # 🚀 LocNetServe - Ultimate Local Web Server for Windows Development
 
 [![Windows](https://img.shields.io/badge/Windows-10+-0078D6?style=for-the-badge&logo=windows)](https://www.microsoft.com/en-us/windows)
@@ -6,7 +8,6 @@
 [![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php)](https://www.php.net/)
 [![AutoHotkey](https://img.shields.io/badge/AutoHotkey-v2-334455?style=for-the-badge&logo=autohotkey)](https://www.autohotkey.com/)
 ![GitHub release](https://img.shields.io/github/v/release/sassisouid/locnetserve)
-**The Most Complete Local Development Server Solution - Apache, MySQL, PHP & phpMyAdmin Pre-Configured**
 
 ---
 
