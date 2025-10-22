@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocNetServe - Complete Local Web Server for Windows</title>
+    <meta name="description" content="LocNetServe: Complete local web server with Apache, MySQL, PHP stack. Real-time dashboard, virtual host manager. Perfect XAMPP alternative for Windows development.">
+    <meta name="keywords" content="local web server, localhost, phpmyadmin, apache mysql php, web development server, windows web server, xampp alternative">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #fff;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .features {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .features h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #333;
+            font-size: 2.5rem;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .quick-start {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+        
+        .quick-start h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+        
+        .code-block {
+            background: #34495e;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .code-block code {
+            color: #ecf0f1;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🚀 LocNetServe</h1>
+            <p>Complete Local Web Server for Windows Development</p>
+            <p>Apache • MySQL • PHP • Real-time Dashboard • Virtual Host Manager</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/sassisouid/locnetserve" class="btn">View on GitHub</a>
+                <a href="https://github.com/sassisouid/locnetserve/releases" class="btn btn-secondary">Download Now</a>
+            </div>
+        </header>
+
+        <section class="features">
+            <h2>✨ Why Choose LocNetServe?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🖥️</div>
+                    <h3>Multi-Interface Control</h3>
+                    <p>CLI, System Tray, and Web Dashboard for complete control</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real-time Monitoring</h3>
+                    <p>Live statistics and service status monitoring</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Virtual Host Manager</h3>
+                    <p>Easy project management with visual interface</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Complete Stack</h3>
+                    <p>Apache 2.4.65, MySQL 8.0.34, PHP 8.2.8 included</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Multi-language</h3>
+                    <p>English, French, and Spanish support</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Auto Backups</h3>
+                    <p>Automatic MySQL database backups</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="quick-start">
+            <h2>🚀 Quick Start</h2>
+            <div class="code-block">
+                <code>
+# 1. Download and run installer<br>
+install/setup.exe<br><br>
+
+# 2. Open Command Prompt as Admin<br>
+serve install<br><br>
+
+# 3. Access your environment:<br>
+# Dashboard: http://localhost/dashboard<br>
+# phpMyAdmin: http://localhost/phpmyadmin<br>
+# Localhost: http://localhost/
+                </code>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>🆚 vs Traditional Solutions</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>LocNetServe</h3>
+                    <p>✅ Web Dashboard</p>
+                    <p>✅ Multi-interface</p>
+                    <p>✅ Virtual Host Manager</p>
+                    <p>✅ Auto Health Checks</p>
+                    <p>✅ Multi-language</p>
+                </div>
+                <div class="feature-card">
+                    <h3>XAMPP/WAMP</h3>
+                    <p>❌ No Dashboard</p>
+                    <p>❌ Single Interface</p>
+                    <p>❌ Manual Config</p>
+                    <p>❌ No Health Checks</p>
+                    <p>❌ Single Language</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>LocNetServe - Made with ❤️ for the developer community</p>
+            <p>© 2025 Sassi Souid | Open Source MIT License</p>
+            <p>
+                <a href="https://github.com/sassisouid/locnetserve" style="color: white;">GitHub</a> • 
+                <a href="https://github.com/sassisouid/locnetserve/releases" style="color: white;">Releases</a> • 
+                <a href="mailto:locnetserve@gmail.com" style="color: white;">Contact</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Google Analytics (optionnel) -->
+    <script>
+        // Vous pouvez ajouter Google Analytics plus tard
+        console.log('LocNetServe GitHub Pages - Complete Local Web Server');
+    </script>
+</body>
+</html>
