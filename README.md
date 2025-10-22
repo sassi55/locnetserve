@@ -5,7 +5,7 @@
 [![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql)](https://www.mysql.com/)
 [![PHP](https://img.shields.io/badge/PHP-8.2-777BB4?style=for-the-badge&logo=php)](https://www.php.net/)
 [![AutoHotkey](https://img.shields.io/badge/AutoHotkey-v2-334455?style=for-the-badge&logo=autohotkey)](https://www.autohotkey.com/)
-
+![GitHub release](https://img.shields.io/github/v/release/sassisouid/locnetserve)
 **The Most Complete Local Development Server Solution - Apache, MySQL, PHP & phpMyAdmin Pre-Configured**
 
 ---
