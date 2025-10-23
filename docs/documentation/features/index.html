@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - LocNetServe</title>
+    <meta name="description" content="Discover all the powerful features of LocNetServe local web server for Windows development.">
+    <link rel="icon" type="image/png" href="../../assets/icons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="shortcut icon" href="../../assets/icons/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="../../assets/icons/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="locnetserve" />
+	<link rel="manifest" href="../../assets/icons/site.webmanifest" />
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .doc-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .content-section {
+            padding: 60px 0;
+        }
+        
+        .content-section:nth-child(even) {
+            background: var(--light);
+        }
+        
+        .feature-category {
+            margin-bottom: 60px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(220, 38, 38, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .feature-card h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .feature-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .feature-tag {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .tech-item {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #fecaca;
+            transition: transform 0.3s ease;
+        }
+        
+        .tech-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(220, 38, 38, 0.1);
+        }
+        
+        .tech-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .tech-version {
+            color: var(--primary);
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.1);
+        }
+        
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+        
+        .comparison-table td {
+            padding: 20px;
+            border-bottom: 1px solid #fecaca;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .checkmark {
+            color: #16a34a;
+            font-weight: bold;
+        }
+        
+        .xmark {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .breadcrumb {
+            background: white;
+            padding: 20px 0;
+            border-bottom: 1px solid #fecaca;
+            margin-top: 70px;
+        }
+        
+        .breadcrumb-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: var(--gray);
+        }
+        
+        .feature-highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .cli-example {
+            background: var(--dark);
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            border: 1px solid var(--dark-gray);
+        }
+        
+        .command {
+            color: #68d391;
+        }
+        
+        .comment {
+            color: #a0aec0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../" class="logo-link">
+                    <img src="../../assets/logo1.png" alt="LocNetServe" class="logo-img">
+                    <span class="logo-text">LocNetServe</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="../../">Home</a>
+                <a href="../documentation">Documentation</a>
+                <a href="../../videos/">Videos</a>
+                <a href="../../api/">API</a>
+                <a href="https://github.com/sassisouid/locnetserve" class="btn-outline">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <div class="breadcrumb-content">
+            <a href="../../">Home</a> / <a href="../documentation">Documentation</a> / <span>Features</span>
+        </div>
+    </div>
+
+    <section class="doc-hero">
+        <div class="container">
+            <div class="hero-logo">
+                <img src="../../assets/logo1.png" alt="LocNetServe" class="hero-logo-img">
+            </div>
+            <h1>Features Overview</h1>
+            <p>Discover the powerful features that make LocNetServe the perfect local development environment</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="feature-highlight">
+                <h2>🚀 Complete Web Server Stack</h2>
+                <p>Everything you need for modern web development in one package</p>
+            </div>
+
+            <h2>🛠️ Technology Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-item">
+                    <div class="tech-icon">🌐</div>
+                    <h3>Apache</h3>
+                    <p>Web Server</p>
+                    <div class="tech-version">Version 2.4.65</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">🐬</div>
+                    <h3>MySQL</h3>
+                    <p>Database Server</p>
+                    <div class="tech-version">Version 8.0.34</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">⚡</div>
+                    <h3>PHP</h3>
+                    <p>Scripting Language</p>
+                    <div class="tech-version">Version 8.2.8</div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">📊</div>
+                    <h3>phpMyAdmin</h3>
+                    <p>Database Management</p>
+                    <div class="tech-version">Latest Version</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="feature-category">
+                <h2>🎛️ Three Interface Modes</h2>
+                <p>Choose your preferred way to interact with LocNetServe</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🖥️</div>
+                        <h3>Web Dashboard</h3>
+                        <p>Beautiful, intuitive web interface for complete server management. Monitor services, manage virtual hosts, and access tools from your browser.</p>
+                        <p><strong>Access:</strong> http://localhost/dashboard</p>
+                        <div class="feature-tags">
+                            <span class="feature-tag">Real-time Monitoring</span>
+                            <span class="feature-tag">Visual Management</span>
+                            <span class="feature-tag">Access Anywhere</span>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">💻</div>
+                        <h3>CLI Interface</h3>
+                        <p>Powerful command-line interface for automation and advanced users. Full control over all server functions with simple commands.</p>
+                        <p><strong>Command:</strong> lns [command]</p>
+                        <div class="feature-tags">
+                            <span class="feature-tag">Automation</span>
+                            <span class="feature-tag">Power User</span>
+                            <span class="feature-tag">Scripting</span>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>System Tray</h3>
+                        <p>Quick access menu from Windows system tray. Start/stop services, access dashboard, and check status with right-click convenience.</p>
+                        <p><strong>Access:</strong> Right-click tray icon</p>
+                        <div class="feature-tags">
+                            <span class="feature-tag">Quick Access</span>
+                            <span class="feature-tag">Minimal</span>
+                            <span class="feature-tag">Convenient</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="feature-category">
+                <h2>🌐 Virtual Hosts Management</h2>
+                <p>Easy management of multiple projects and domains</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">➕</div>
+                        <h3>Visual Host Creation</h3>
+                        <p>Create virtual hosts through the web dashboard with an intuitive form. No manual configuration files editing required.</p>
+                        <div class="cli-example">
+                            <span class="comment"># Create hosts via dashboard at</span><br>
+                            <span class="command">http://localhost/dashboard</span>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📋</div>
+                        <h3>Host Listing</h3>
+                        <p>View all configured virtual hosts with their domains and document roots. Easy overview of your development projects.</p>
+                        <div class="cli-example">
+                            <span class="command">lns -vh show</span><br>
+                            <span class="comment"># List all virtual hosts</span>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🚪</div>
+                        <h3>Quick Access</h3>
+                        <p>Open any virtual host directly in your default browser with a simple command. Streamline your development workflow.</p>
+                        <div class="cli-example">
+                            <span class="command">lns -vh open myproject.local</span><br>
+                            <span class="comment"># Open host in browser</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="feature-category">
+                <h2>📊 Real-time Monitoring</h2>
+                <p>Keep track of your server's performance and status</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🟢</div>
+                        <h3>Service Status</h3>
+                        <p>Real-time monitoring of Apache, MySQL, and other services. Instant visual feedback with color-coded status indicators.</p>
+                        <div class="cli-example">
+                            <span class="command">lns status</span><br>
+                            <span class="comment"># Check all services status</span>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3>Performance Metrics</h3>
+                        <p>Monitor CPU usage, memory consumption, and active connections. Identify bottlenecks and optimize performance.</p>
+                        <div class="cli-example">
+                            <span class="command">lns status</span><br>
+                            <span class="comment"># Detailed performance info</span>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <h3>Log Viewer</h3>
+                        <p>Access Apache and MySQL logs directly from the dashboard or CLI. Real-time log streaming and search capabilities.</p>
+                        <div class="cli-example">
+                            <span class="command">lns logs apache</span><br>
+                            <span class="command">lns logs mysql --tail</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="feature-category">
+                <h2>🔧 Development Tools</h2>
+                <p>Essential tools for modern web development</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💾</div>
+                        <h3>phpMyAdmin</h3>
+                        <p>Full-featured database management tool included. Manage MySQL databases, users, and execute SQL queries with ease.</p>
+                        <p><strong>Access:</strong> http://localhost/phpmyadmin</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>SSL Support</h3>
+                        <p>Test HTTPS locally with built-in SSL certificate support. Perfect for developing secure applications.</p>
+                        <div class="cli-example">
+                            <span class="command">lns security ssl</span><br>
+                            <span class="comment"># Manage SSL certificates</span>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📦</div>
+                        <h3>Backup System</h3>
+                        <p>Automated backup and restore functionality for your databases and configuration. Never lose your work.</p>
+                        <div class="cli-example">
+                            <span class="command">lns backup create</span><br>
+                            <span class="command">lns backup restore latest</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>⚡ Comparison with Alternatives</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>LocNetServe</th>
+                        <th>XAMPP</th>
+                        <th>WAMP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Web Dashboard</td>
+                        <td class="checkmark">✅ Included</td>
+                        <td class="xmark">❌ Not Available</td>
+                        <td class="xmark">❌ Not Available</td>
+                    </tr>
+                    <tr>
+                        <td>Three Interface Modes</td>
+                        <td class="checkmark">✅ Web, CLI, Tray</td>
+                        <td class="xmark">❌ Basic Only</td>
+                        <td class="xmark">❌ Basic Only</td>
+                    </tr>
+                    <tr>
+                        <td>Virtual Hosts Manager</td>
+                        <td class="checkmark">✅ Visual Interface</td>
+                        <td class="xmark">❌ Manual Config</td>
+                        <td class="xmark">❌ Manual Config</td>
+                    </tr>
+                    <tr>
+                        <td>Real-time Monitoring</td>
+                        <td class="checkmark">✅ Live Statistics</td>
+                        <td class="xmark">❌ No Monitoring</td>
+                        <td class="xmark">❌ No Monitoring</td>
+                    </tr>
+                    <tr>
+                        <td>CLI Automation</td>
+                        <td class="checkmark">✅ Full CLI Support</td>
+                        <td class="xmark">❌ Limited</td>
+                        <td class="xmark">❌ Limited</td>
+                    </tr>
+                    <tr>
+                        <td>Windows Integration</td>
+                        <td class="checkmark">✅ Native</td>
+                        <td class="checkmark">✅ Good</td>
+                        <td class="checkmark">✅ Good</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="feature-highlight">
+                <h2>🚀 Ready to Get Started?</h2>
+                <p>Experience the power of LocNetServe for your next web development project</p>
+                <a href="../getting-started.html" class="btn btn-primary" style="margin-top: 20px;">Start Using LocNetServe</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="../../assets/logo1.png" alt="LocNetServe" class="footer-logo-img">
+                    </div>
+                    <p>Complete local web server for Windows developers</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <a href="../">Documentation Home</a>
+                    <a href="../installation/">Installation Guide</a>
+                    <a href="../getting-started/">Getting Started</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <a href="https://github.com/sassisouid/locnetserve">GitHub</a>
+                    <a href="https://github.com/sassisouid/locnetserve/issues">Report Issues</a>
+                    <a href="https://github.com/sassisouid/locnetserve/discussions">Discussions</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LocNetServe. Open source MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

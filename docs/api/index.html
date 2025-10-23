@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Reference - LocNetServe</title>
+    <meta name="description" content="Complete API reference for LocNetServe CLI commands and web dashboard API.">
+	<link rel="icon" type="image/png" href="../assets/icons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="shortcut icon" href="../assets/icons/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="locnetserve" />
+	<link rel="manifest" href="../assets/icons/site.webmanifest" />
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .api-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .api-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .command-category {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.1);
+            border: 1px solid #fecaca;
+        }
+        
+        .command-category h2 {
+            color: var(--dark);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #fecaca;
+        }
+        
+        .command-item {
+            background: var(--light);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+        
+        .command-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.1);
+        }
+        
+        .command-syntax {
+            font-family: 'Courier New', monospace;
+            background: var(--dark);
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border: 1px solid var(--dark-gray);
+        }
+        
+        .command-description {
+            color: var(--gray);
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+        
+        .command-example {
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            border-left: 4px solid #d97706;
+        }
+        
+        .api-tabs {
+            display: flex;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #fecaca;
+            background: white;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(220, 38, 38, 0.1);
+        }
+        
+        .api-tab {
+            padding: 15px 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+        
+        .api-tab.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+            font-weight: bold;
+            background: var(--light);
+        }
+        
+        .api-tab:hover {
+            background: var(--light);
+            color: var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .endpoint {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid #fecaca;
+            transition: transform 0.3s ease;
+        }
+        
+        .endpoint:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.1);
+        }
+        
+        .endpoint-method {
+            display: inline-block;
+            padding: 6px 15px;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .method-get { background: #16a34a; }
+        .method-post { background: #ea580c; }
+        .method-put { background: #2563eb; }
+        .method-delete { background: var(--primary); }
+        
+        .endpoint-url {
+            font-family: 'Courier New', monospace;
+            background: var(--light);
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            color: var(--dark);
+            border: 1px solid #fecaca;
+        }
+        
+        .breadcrumb {
+            background: white;
+            padding: 20px 0;
+            border-bottom: 1px solid #fecaca;
+            margin-top: 70px;
+        }
+        
+        .breadcrumb-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: var(--gray);
+        }
+        
+        .code-highlight {
+            color: #68d391;
+        }
+        
+        .response-example {
+            background: var(--dark);
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            border: 1px solid var(--dark-gray);
+        }
+        
+        .param {
+            color: #fbbf24;
+        }
+        
+        .optional {
+            color: #a0aec0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../" class="logo-link">
+                    <img src="../assets/logo1.png" alt="LocNetServe" class="logo-img">
+                    <span class="logo-text">LocNetServe</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="../">Home</a>
+                <a href="../documentation/">Documentation</a>
+                <a href="../videos/">Videos</a>
+                <a href="./" class="active">API</a>
+                <a href="https://github.com/sassisouid/locnetserve" class="btn-outline">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <div class="breadcrumb-content">
+            <a href="../">Home</a> / <a href="../documentation/">Documentation</a> / <span>API Reference</span>
+        </div>
+    </div>
+
+    <section class="api-hero">
+        <div class="container">
+            <div class="hero-logo">
+                <img src="../assets/logo1.png" alt="LocNetServe" class="hero-logo-img">
+            </div>
+            <h1>API Reference</h1>
+            <p>Complete CLI commands and web dashboard API documentation</p>
+        </div>
+    </section>
+
+    <div class="api-container">
+        <div class="api-tabs">
+            <button class="api-tab active" onclick="showTab('cli')">CLI Commands</button>
+            <button class="api-tab" onclick="showTab('web')">Web API</button>
+            <button class="api-tab" onclick="showTab('config')">Configuration</button>
+        </div>
+
+        <div id="cli-tab" class="tab-content active">
+            <!-- Core Commands -->
+            <div class="command-category">
+                <h2>🎯 Core Commands</h2>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns help</div>
+                    <div class="command-description">Show LocNetServe Help with all available commands</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns -v</div>
+                    <div class="command-description">Show LocNetServe version information</div>
+                    <div class="command-example">$ lns -v<br><span class="code-highlight">LocNetServe v1.0.0</span></div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns status</div>
+                    <div class="command-description">Show status of all services (Apache, MySQL, PHP)</div>
+                    <div class="command-example">$ lns status<br><span class="code-highlight">🟢 Apache: Running (port 80)</span><br><span class="code-highlight">🟢 MySQL: Running (port 3306)</span><br><span class="code-highlight">🟢 PHP: 8.2.8</span></div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns start</div>
+                    <div class="command-description">Start LocNetServe main server</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns stop</div>
+                    <div class="command-description">Stop LocNetServe main server</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns all start</div>
+                    <div class="command-description">Start Apache and MySQL services together</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns all stop</div>
+                    <div class="command-description">Stop all running services</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns all restart</div>
+                    <div class="command-description">Restart Apache and MySQL services</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns exit</div>
+                    <div class="command-description">Exit the terminal</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns lang</div>
+                    <div class="command-description">Get current language</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns lang <span class="param">&lt;code&gt;</span></div>
+                    <div class="command-description">Set language (en, fr, es)</div>
+                    <div class="command-example">$ lns lang fr<br><span class="code-highlight">Language set to French</span></div>
+                </div>
+            </div>
+
+            <!-- Apache Commands -->
+            <div class="command-category">
+                <h2>🌐 Apache Management</h2>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns apache start</div>
+                    <div class="command-description">Start Apache service</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns apache stop</div>
+                    <div class="command-description">Stop Apache service</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns apache restart</div>
+                    <div class="command-description">Restart Apache service</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns apache status</div>
+                    <div class="command-description">Check Apache Status</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns apache log</div>
+                    <div class="command-description">Open Apache log folder</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns apache conf</div>
+                    <div class="command-description">Open httpd.conf configuration file</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns apache vhosts</div>
+                    <div class="command-description">Open VirtualHosts configuration file</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns apache ports</div>
+                    <div class="command-description">List Apache listening ports</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns apache version</div>
+                    <div class="command-description">Show Apache version</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns apache config check</div>
+                    <div class="command-description">Check Apache configuration for errors</div>
+                </div>
+            </div>
+
+            <!-- MySQL Commands -->
+            <div class="command-category">
+                <h2>🗄️ MySQL Management</h2>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns mysql start</div>
+                    <div class="command-description">Start MySQL service</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns mysql stop</div>
+                    <div class="command-description">Stop MySQL service</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns mysql restart</div>
+                    <div class="command-description">Restart MySQL service</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns mysql status</div>
+                    <div class="command-description">Check MySQL Status</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns mysql ports</div>
+                    <div class="command-description">List MySQL listening ports</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns mysql shell</div>
+                    <div class="command-description">Open MySQL interactive shell</div>
+                    <div class="command-example">$ lns mysql shell<br><span class="code-highlight">Welcome to the MySQL monitor...</span></div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns mysql export <span class="param">&lt;db&gt;</span> <span class="optional">[output_file.sql]</span></div>
+                    <div class="command-description">Export a database to SQL file</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns mysql import <span class="param">&lt;db&gt;</span> <span class="param">&lt;file.sql&gt;</span></div>
+                    <div class="command-description">Import SQL file into a database</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns mysql create <span class="param">&lt;db_name&gt;</span></div>
+                    <div class="command-description">Create a new database</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns mysql drop <span class="param">&lt;db_name&gt;</span></div>
+                    <div class="command-description">Drop an old database</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns mysql data list</div>
+                    <div class="command-description">List all MySQL databases</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns mysql users</div>
+                    <div class="command-description">List all MySQL users with host information</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns mysql users info <span class="param">&lt;username&gt;</span></div>
+                    <div class="command-description">Show detailed information about a specific user</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns mysql user add <span class="param">&lt;username&gt;</span> <span class="param">&lt;password&gt;</span></div>
+                    <div class="command-description">Create a new MySQL user with a password</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns mysql user del <span class="param">&lt;username&gt;</span></div>
+                    <div class="command-description">Remove a MySQL user</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns mysql version</div>
+                    <div class="command-description">Show MySQL version</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns mysql health</div>
+                    <div class="command-description">Run a health check for MySQL service</div>
+                </div>
+            </div>
+
+            <!-- PHP Commands -->
+            <div class="command-category">
+                <h2>⚡ PHP Management</h2>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns php version</div>
+                    <div class="command-description">Show PHP version</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns php info</div>
+                    <div class="command-description">Open phpinfo() in browser</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns php ini</div>
+                    <div class="command-description">Open php.ini configuration file</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns php ext list</div>
+                    <div class="command-description">List all PHP extensions with status</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns php ext enable <span class="param">&lt;ext&gt;</span></div>
+                    <div class="command-description">Enable a PHP extension</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns php ext disable <span class="param">&lt;ext&gt;</span></div>
+                    <div class="command-description">Disable a PHP extension</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns php ext available</div>
+                    <div class="command-description">List available disabled extensions</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns php update</div>
+                    <div class="command-description">Check PHP update</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns php composer <span class="param">&lt;cmd&gt;</span></div>
+                    <div class="command-description">Run composer command (install, update, etc.)</div>
+                </div>
+            </div>
+
+            <!-- Laravel Commands -->
+            <div class="command-category">
+                <h2>🪄 Laravel Commands</h2>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns laravel serve</div>
+                    <div class="command-description">Run Laravel local development server</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns laravel migrate</div>
+                    <div class="command-description">Run Laravel migrations</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns laravel cache</div>
+                    <div class="command-description">Clear Laravel cache</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns laravel route</div>
+                    <div class="command-description">List Laravel routes</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns laravel tinker</div>
+                    <div class="command-description">Open Laravel tinker shell</div>
+                </div>
+            </div>
+
+            <!-- Update Commands -->
+            <div class="command-category">
+                <h2>🔄 Update Commands</h2>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns update locnetserve</div>
+                    <div class="command-description">Check if new versions are available and update online</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns update apache <span class="param">&lt;zip&gt;</span></div>
+                    <div class="command-description">Update Apache from ZIP file</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns update mysql <span class="param">&lt;zip&gt;</span></div>
+                    <div class="command-description">Update MySQL from ZIP file</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns update php <span class="param">&lt;zip&gt;</span></div>
+                    <div class="command-description">Update PHP from ZIP file</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns update check</div>
+                    <div class="command-description">Check if new versions are available</div>
+                </div>
+            </div>
+
+            <!-- Utilities Commands -->
+            <div class="command-category">
+                <h2>🔧 Utilities</h2>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns -u open www</div>
+                    <div class="command-description">Open www project root folder</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns -u open localhost</div>
+                    <div class="command-description">Open localhost in browser</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns -u open dashboard</div>
+                    <div class="command-description">Open local dashboard in browser</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns -u config edit</div>
+                    <div class="command-description">Open config.json for editing</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns -u show ports</div>
+                    <div class="command-description">List all active ports</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns -u ssl gen</div>
+                    <div class="command-description">Generate self-signed SSL certificate for localhost</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns -u backup all</div>
+                    <div class="command-description">Backup MySQL + WWW + configs</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns -u backup mysql</div>
+                    <div class="command-description">Backup MySQL databases</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns -u backup config</div>
+                    <div class="command-description">Backup configuration files</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns -u backup projects</div>
+                    <div class="command-description">Backup projects in www</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns -u backup list</div>
+                    <div class="command-description">List available backups</div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns -u backup restore <span class="param">&lt;zip&gt;</span></div>
+                    <div class="command-description">Restore from a backup</div>
+                </div>
+            </div>
+
+            <!-- Virtual Hosts Commands -->
+            <div class="command-category">
+                <h2>🌐 Virtual Hosts</h2>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns -vh show</div>
+                    <div class="command-description">List all configured virtual hosts</div>
+                    <div class="command-example">$ lns -vh show<br><span class="code-highlight">myproject.local → C:\MyServer\www\myproject</span><br><span class="code-highlight">testsite.dev → C:\MyServer\www\testsite</span></div>
+                </div>
+                
+                <div class="command-item">
+                    <div class="command-syntax">lns -vh open <span class="param">&lt;vhost&gt;</span></div>
+                    <div class="command-description">Open specific virtual host in browser</div>
+                    <div class="command-example">$ lns -vh open myproject.local</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rest of the Web API and Configuration tabs remain the same -->
+        <div id="web-tab" class="tab-content">
+            <div class="command-category">
+                <h2>🌐 Web Dashboard API</h2>
+                <p>The web dashboard provides a RESTful API for monitoring and controlling services.</p>
+                
+                <div class="endpoint">
+                    <div>
+                        <span class="endpoint-method method-get">GET</span>
+                        <strong>Service Status</strong>
+                    </div>
+                    <div class="endpoint-url">/api/status</div>
+                    <div class="command-description">Get current status of all services</div>
+                    <div class="response-example">{
+  "apache": {
+    "running": true,
+    "port": 80,
+    "version": "2.4.65"
+  },
+  "mysql": {
+    "running": true, 
+    "connections": 5,
+    "version": "8.0.34"
+  },
+  "php": {
+    "version": "8.2.8"
+  }
+}</div>
+                </div>
+                
+                <div class="endpoint">
+                    <div>
+                        <span class="endpoint-method method-post">POST</span>
+                        <strong>Start Service</strong>
+                    </div>
+                    <div class="endpoint-url">/api/services/start</div>
+                    <div class="command-description">Start a specific service</div>
+                    <div class="response-example">Payload:
+{
+  "service": "apache"
+}
+
+Response:
+{
+  "success": true,
+  "message": "Apache started successfully"
+}</div>
+                </div>
+                
+                <div class="endpoint">
+                    <div>
+                        <span class="endpoint-method method-post">POST</span>
+                        <strong>Stop Service</strong>
+                    </div>
+                    <div class="endpoint-url">/api/services/stop</div>
+                    <div class="command-description">Stop a specific service</div>
+                    <div class="response-example">Payload:
+{
+  "service": "mysql"
+}
+
+Response:
+{
+  "success": true, 
+  "message": "MySQL stopped successfully"
+}</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="config-tab" class="tab-content">
+            <div class="command-category">
+                <h2>⚙️ Configuration Reference</h2>
+                <p>Complete structure of the <code>config.json</code> file used by LocNetServe.</p>
+                
+                <div class="config-section">
+                    <h3>📁 File Structure</h3>
+                    <div class="response-example">{
+  "<span class="code-highlight">configPath</span>": "..\\config\\config.json",
+  "<span class="code-highlight">icons</span>": { ... },
+  "<span class="code-highlight">myserver</span>": { ... },
+  "<span class="code-highlight">paths</span>": { ... },
+  "<span class="code-highlight">services</span>": { ... },
+  "<span class="code-highlight">settings</span>": { ... }
+}</div>
+                </div>
+
+                <div class="config-section">
+                    <h3>🎨 Icons Configuration</h3>
+                    <div class="response-example">"<span class="code-highlight">icons</span>": {
+  "<span class="code-highlight">apache</span>": {
+    "<span class="code-highlight">off</span>": "light.ico",
+    "<span class="code-highlight">on</span>": "green.ico"
+  },
+  "<span class="code-highlight">custom</span>": "logo1.png",
+  "<span class="code-highlight">mysql</span>": {
+    "<span class="code-highlight">off</span>": "light.ico",
+    "<span class="code-highlight">on</span>": "green.ico"
+  },
+  "<span class="code-highlight">tray</span>": {
+    "<span class="code-highlight">off</span>": "logo2.png",
+    "<span class="code-highlight">on</span>": "logo3.png",
+    "<span class="code-highlight">stopped</span>": "logo1.png"
+  }
+}</div>
+                </div>
+
+                <div class="config-section">
+                    <h3>🚀 Server Information</h3>
+                    <div class="response-example">"<span class="code-highlight">myserver</span>": {
+  "<span class="code-highlight">status</span>": "running",
+  "<span class="code-highlight">version</span>": "v1.0.0"
+}</div>
+                </div>
+
+                <div class="config-section">
+                    <h3>📂 Paths Configuration</h3>
+                    <div class="response-example">"<span class="code-highlight">paths</span>": {
+  "<span class="code-highlight">apache</span>": "{BASE_PATH}\\bin\\apache",
+  "<span class="code-highlight">apache_conf</span>": "{BASE_PATH}\\bin\\apache\\conf",
+  "<span class="code-highlight">base</span>": "{BASE_PATH}\\",
+  "<span class="code-highlight">cmd</span>": "{BASE_PATH}\\config\\cmd\\",
+  "<span class="code-highlight">dashboard</span>": "{BASE_PATH}\\apps\\dashboard\\",
+  "<span class="code-highlight">icons</span>": "{BASE_PATH}\\icons\\",
+  "<span class="code-highlight">locales</span>": "{BASE_PATH}\\config\\locales\\",
+  "<span class="code-highlight">mysql</span>": "{BASE_PATH}\\bin\\mysql\\",
+  "<span class="code-highlight">php</span>": "{BASE_PATH}\\bin\\php"
+}</div>
+                </div>
+
+                <div class="config-section">
+                    <h3>🔧 Services Configuration</h3>
+                    <div class="response-example">"<span class="code-highlight">services</span>": {
+  "<span class="code-highlight">Apache</span>": {
+    "<span class="code-highlight">conf</span>": "{BASE_PATH}\\bin\\apache\\conf\\httpd.conf",
+    "<span class="code-highlight">exe</span>": "{BASE_PATH}\\bin\\apache\\bin\\httpd.exe",
+    "<span class="code-highlight">hide_window</span>": 1,
+    "<span class="code-highlight">log_file</span>": "{BASE_PATH}\\bin\\apache\\logs\\error.log",
+    "<span class="code-highlight">process</span>": "httpd.exe",
+    "<span class="code-highlight">service</span>": "Apache2.4",
+    "<span class="code-highlight">version_cmd</span>": "-v",
+    "<span class="code-highlight">version_file</span>": "{BASE_PATH}\\bin\\apache\\bin\\httpd.exe"
+  },
+  "<span class="code-highlight">LocNetServe</span>": {
+    "<span class="code-highlight">exe</span>": "{BASE_PATH}\\LocNetServe.exe"
+  },
+  "<span class="code-highlight">MySQL</span>": {
+    "<span class="code-highlight">admin</span>": "{BASE_PATH}\\bin\\mysql\\bin\\mysqladmin.exe",
+    "<span class="code-highlight">exe</span>": "{BASE_PATH}\\bin\\mysql\\bin\\mysqld.exe",
+    "<span class="code-highlight">hide_window</span>": 1,
+    "<span class="code-highlight">log_file</span>": "{BASE_PATH}\\bin\\mysql\\data\\mysql_error.log",
+    "<span class="code-highlight">password</span>": "",
+    "<span class="code-highlight">process</span>": "mysqld.exe",
+    "<span class="code-highlight">service</span>": "MySQL94",
+    "<span class="code-highlight">user</span>": "root",
+    "<span class="code-highlight">version_cmd</span>": "-version",
+    "<span class="code-highlight">version_file</span>": "{BASE_PATH}\\bin\\mysql\\bin\\mysqld.exe"
+  },
+  "<span class="code-highlight">PHP</span>": {
+    "<span class="code-highlight">exe</span>": "{BASE_PATH}\\bin\\php\\php.exe",
+    "<span class="code-highlight">url_info</span>": "http://localhost/info.php",
+    "<span class="code-highlight">version_cmd</span>": "-v",
+    "<span class="code-highlight">version_file</span>": "{BASE_PATH}\\bin\\php\\php.exe"
+  },
+  "<span class="code-highlight">versions</span>": {
+    "<span class="code-highlight">apache</span>": "2.4.65",
+    "<span class="code-highlight">locnetserve</span>": "LocNetServe v1.0.0",
+    "<span class="code-highlight">mysql</span>": "8.0.34",
+    "<span class="code-highlight">php</span>": "8.2.8"
+  }
+}</div>
+                </div>
+
+                <div class="config-section">
+                    <h3>⚙️ Settings Configuration</h3>
+                    <div class="response-example">"<span class="code-highlight">settings</span>": {
+  "<span class="code-highlight">language</span>": "en",
+  "<span class="code-highlight">refreshInterval</span>": "3000",
+  "<span class="code-highlight">t_lang</span>": "1760953244",
+  "<span class="code-highlight">t_pid</span>": "1760296258",
+  "<span class="code-highlight">t_serve</span>": "1761084120"
+}</div>
+                </div>
+
+                <div class="command-item">
+                    <h3>Environment Variables</h3>
+                    <div class="command-description">LocNetServe uses these environment variables:</div>
+                    <div class="command-example">LOCNETSERVE_HOME=C:\MyServer<br>PATH=%LOCNETSERVE_HOME%\bin;%PATH%</div>
+                </div>
+            </div>
+        </div>
+		
+		
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="../assets/logo1.png" alt="LocNetServe" class="footer-logo-img">
+                    </div>
+                    <p>Complete local web server for Windows developers</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="../documentation/">Documentation</a>
+                    <a href="../videos/">Video Tutorials</a>
+                    <a href="../features/">Features</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <a href="https://github.com/sassisouid/locnetserve">GitHub</a>
+                    <a href="https://github.com/sassisouid/locnetserve/issues">Report Issues</a>
+                    <a href="https://github.com/sassisouid/locnetserve/discussions">Discussions</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LocNetServe. Open source MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.api-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

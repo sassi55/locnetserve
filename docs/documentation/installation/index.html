@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation Guide - LocNetServe</title>
+    <meta name="description" content="Step-by-step installation guide for LocNetServe local web server on Windows.">
+		<link rel="icon" type="image/png" href="../../assets/icons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="shortcut icon" href="../../assets/icons/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="../../assets/icons/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="locnetserve" />
+	<link rel="manifest" href="../../assets/icons/site.webmanifest" />
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .doc-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .content-section {
+            padding: 60px 0;
+        }
+        
+        .content-section:nth-child(even) {
+            background: var(--light);
+        }
+        
+        .step-by-step {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .step {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.15);
+        }
+        
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .code-block {
+            background: var(--dark);
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            border: 1px solid var(--dark-gray);
+        }
+        
+        .code-block code {
+            color: #e2e8f0;
+        }
+        
+        .warning {
+            background: #fed7d7;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            border: 1px solid #fecaca;
+        }
+        
+        .tip {
+            background: #dcfce7;
+            border-left: 4px solid #16a34a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            border: 1px solid #bbf7d0;
+        }
+        
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .requirement-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #fecaca;
+            transition: transform 0.3s ease;
+        }
+        
+        .requirement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.1);
+        }
+        
+        .requirement-card h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumb {
+            background: white;
+            padding: 20px 0;
+            border-bottom: 1px solid #fecaca;
+            margin-top: 70px;
+        }
+        
+        .breadcrumb-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: var(--gray);
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.4);
+        }
+        
+        .nav-menu a.active {
+            color: var(--primary);
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .nav-menu a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../" class="logo-link">
+                    <img src="../../assets/logo1.png" alt="LocNetServe" class="logo-img">
+                    <span class="logo-text">LocNetServe</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="../../">Home</a>
+                <a href="../">Documentation</a>
+                <a href="../../videos/">Videos</a>
+                <a href="../../api/">API</a>
+                <a href="https://github.com/sassisouid/locnetserve" class="btn-outline">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <div class="breadcrumb-content">
+            <a href="../../">Home</a> / <a href="../">Documentation</a> / <span>Installation Guide</span>
+        </div>
+    </div>
+
+    <section class="doc-hero">
+        <div class="container">
+            <div class="hero-logo">
+                <img src="../../assets/logo1.png" alt="LocNetServe" class="hero-logo-img">
+            </div>
+            <h1>Installation Guide</h1>
+            <p>Get LocNetServe running on your Windows system in minutes</p>
+            <a href="https://github.com/sassisouid/locnetserve/releases/latest" class="download-btn">
+                ⬇️ Download Latest Release
+            </a>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>System Requirements</h2>
+            <div class="requirements-grid">
+                <div class="requirement-card">
+                    <h3>💻 Minimum</h3>
+                    <p><strong>Windows 10/11</strong> (64-bit)</p>
+                    <p><strong>2GB RAM</strong></p>
+                    <p><strong>500MB</strong> storage</p>
+                    <p>.NET Framework 4.8</p>
+                </div>
+                <div class="requirement-card">
+                    <h3>🚀 Recommended</h3>
+                    <p><strong>Windows 11</strong> (64-bit)</p>
+                    <p><strong>4GB+ RAM</strong></p>
+                    <p><strong>1GB+</strong> SSD storage</p>
+                    <p>.NET 6.0 Runtime</p>
+                </div>
+                <div class="requirement-card">
+                    <h3>⚡ Development</h3>
+                    <p><strong>Windows 10/11</strong></p>
+                    <p><strong>8GB+ RAM</strong></p>
+                    <p><strong>2GB+</strong> SSD storage</p>
+                    <p>Modern browser</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container step-by-step">
+            <h2>📥 Installation Steps</h2>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Download LocNetServe</h3>
+                <p>Download the latest release from the GitHub releases page:</p>
+                <div class="code-block">
+                    <span style="color: #68d391"># Download from GitHub Releases</span><br>
+                    https://github.com/sassisouid/locnetserve/releases<br><br>
+                    <span style="color: #68d391"># Or use direct download link</span><br>
+                    https://github.com/sassisouid/locnetserve/releases/latest
+                </div>
+               
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Run the Installer</h3>
+                <p>Extract the downloaded files and run the installer:</p>
+                <div class="code-block">
+                    <span style="color: #68d391"># Navigate to the install directory</span><br>
+                    cd install<br><br>
+                    <span style="color: #68d391"># Run the setup executable</span><br>
+                    setup.exe
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Important:</strong> Run as Administrator for proper service installation and firewall configuration.
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Complete Installation</h3>
+                <p>Open Command Prompt as Administrator and run:</p>
+                <div class="code-block">
+                    <span style="color: #68d391"># Complete the installation</span><br>
+                    serve install<br><br>
+                    <span style="color: #68d391"># The installer will:</span><br>
+                    <span style="color: #68d391">✅</span> Set up environment variables<br>
+                    <span style="color: #68d391">✅</span> Configure Windows services<br>
+                    <span style="color: #68d391">✅</span> Create desktop shortcuts<br>
+                    <span style="color: #68d391">✅</span> Set file permissions<br>
+                    <span style="color: #68d391">✅</span> Configure firewall rules
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Verify Installation</h3>
+                <p>Check that everything is working correctly:</p>
+                <div class="code-block">
+                    <span style="color: #68d391"># Check service status</span><br>
+                    lns status<br><br>
+                    <span style="color: #68d391"># Expected output:</span><br>
+                    <span style="color: #68d391">🟢</span> Apache: Running (port 80)<br>
+                    <span style="color: #68d391">🟢</span> MySQL: Running (port 3306)<br>
+                    <span style="color: #68d391">🟢</span> Dashboard: http://localhost/dashboard<br>
+                    <span style="color: #68d391">🟢</span> phpMyAdmin: http://localhost/phpmyadmin
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section" id="troubleshooting">
+        <div class="container">
+            <h2>🔧 Troubleshooting</h2>
+            
+            <div class="step">
+                <h3>Port Conflicts</h3>
+                <p>If port 80 or 3306 are already in use by other applications:</p>
+                <div class="code-block">
+                    <span style="color: #68d391"># Stop all services first</span><br>
+                    lns stop all<br><br>
+                    <span style="color: #68d391"># Edit configuration to change ports</span><br>
+                    lns config edit<br><br>
+                    <span style="color: #68d391"># Restart services with new ports</span><br>
+                    lns start all
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Firewall Issues</h3>
+                <p>If services are blocked by Windows Firewall:</p>
+                <div class="code-block">
+                    <span style="color: #68d391"># Allow Apache through Windows Firewall</span><br>
+                    netsh advfirewall firewall add rule name="LocNetServe Apache" ^<br>
+                    dir=in action=allow program="C:\LocNetServe\bin\apache\bin\httpd.exe" enable=yes<br><br>
+                    <span style="color: #68d391"># Allow MySQL through Windows Firewall</span><br>
+                    netsh advfirewall firewall add rule name="LocNetServe MySQL" ^<br>
+                    dir=in action=allow program="C:\LocNetServe\bin\mysql\bin\mysqld.exe" enable=yes
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Permission Issues</h3>
+                <p>If you encounter permission errors during installation:</p>
+                <div class="code-block">
+                    <span style="color: #68d391"># Run Command Prompt as Administrator</span><br>
+                    <span style="color: #68d391"># Re-run installation with elevated privileges</span><br>
+                    serve install --force<br><br>
+                    <span style="color: #68d391"># Or repair installation</span><br>
+                    serve repair
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="../../assets/logo1.png" alt="LocNetServe" class="footer-logo-img">
+                    </div>
+                    <p>Complete local web server for Windows developers</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <a href="../">Documentation Home</a>
+                    <a href="../getting-started/">Getting Started</a>
+                    <a href="../tutorials/">Tutorials</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <a href="https://github.com/sassisouid/locnetserve">GitHub</a>
+                    <a href="https://github.com/sassisouid/locnetserve/issues">Report Issues</a>
+                    <a href="https://github.com/sassisouid/locnetserve/discussions">Discussions</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LocNetServe. Open source MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

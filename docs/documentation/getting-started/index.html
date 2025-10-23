@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started - LocNetServe</title>
+    <meta name="description" content="Quick start guide for LocNetServe - learn how to set up and use your local web server in minutes.">
+	<link rel="icon" type="image/png" href="../assets/icons/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="shortcut icon" href="../../assets/icons/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="../../assets/icons/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="locnetserve" />
+	<link rel="manifest" href="../../assets/icons/site.webmanifest" />
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .doc-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .content-section {
+            padding: 60px 0;
+        }
+        
+        .content-section:nth-child(even) {
+            background: var(--light);
+        }
+        
+        .quick-guide {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .guide-step {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .guide-step:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.15);
+        }
+        
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .code-block {
+            background: var(--dark);
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            border: 1px solid var(--dark-gray);
+        }
+        
+        .tip {
+            background: #dcfce7;
+            border-left: 4px solid #16a34a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            border: 1px solid #bbf7d0;
+        }
+        
+        .warning {
+            background: #fed7d7;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+            border: 1px solid #fecaca;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .feature-item {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #fecaca;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(220, 38, 38, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .breadcrumb {
+            background: white;
+            padding: 20px 0;
+            border-bottom: 1px solid #fecaca;
+            margin-top: 70px;
+        }
+        
+        .breadcrumb-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumb span {
+            color: var(--gray);
+        }
+        
+        .access-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .access-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #fecaca;
+            transition: transform 0.3s ease;
+        }
+        
+        .access-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.1);
+        }
+        
+        .access-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .next-steps {
+            background: var(--primary);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .next-steps a {
+            color: white;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        
+        .command-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(220, 38, 38, 0.1);
+        }
+        
+        .command-table th {
+            background: var(--primary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .command-table td {
+            padding: 15px;
+            border-bottom: 1px solid #fecaca;
+        }
+        
+        .command-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .command-table code {
+            background: var(--light);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--primary-dark);
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary);
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px 10px;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+        
+        .download-btn:hover {
+            background: transparent;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .support-section {
+            background: var(--light);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+            border: 2px solid var(--primary);
+        }
+        
+        .support-email {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .support-email:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="../../" class="logo-link">
+                    <img src="../../assets/logo1.png" alt="LocNetServe" class="logo-img">
+                    <span class="logo-text">LocNetServe</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="../../">Home</a>
+                <a href="../">Documentation</a>
+                <a href="../../videos/">Videos</a>
+                <a href="../../api/">API</a>
+                <a href="https://github.com/sassisouid/locnetserve" class="btn-outline">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <div class="breadcrumb-content">
+            <a href="../../">Home</a> / <a href="../">Documentation</a> / <span>Getting Started</span>
+        </div>
+    </div>
+
+    <section class="doc-hero">
+        <div class="container">
+            <div class="hero-logo">
+                <img src="../../assets/logo1.png" alt="LocNetServe" class="hero-logo-img">
+            </div>
+            <h1>Getting Started</h1>
+            <p>Learn how to set up and use LocNetServe in under 10 minutes</p>
+            <a href="https://github.com/sassisouid/locnetserve" class="download-btn" target="_blank">
+                ⬇️ Download from GitHub
+            </a>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container quick-guide">
+            <h2>🚀 Complete Setup Guide</h2>
+            
+            <div class="guide-step">
+                <div class="step-number">1</div>
+                <h3>Download LocNetServe</h3>
+                <p>Visit our GitHub repository to download the latest version:</p>
+                <div class="code-block">
+                    <span style="color: #68d391"># Go to GitHub repository</span><br>
+                    https://github.com/sassisouid/locnetserve
+                </div>
+                <p>Download the ZIP file from the releases section.</p>
+            </div>
+
+            <div class="guide-step">
+                <div class="step-number">2</div>
+                <h3>Extract and Install Configuration</h3>
+                <p>Extract the downloaded ZIP file, then run the setup:</p>
+                <div class="code-block">
+                    <span style="color: #68d391"># 1. Extract the ZIP file</span><br>
+                    <span style="color: #68d391"># 2. Navigate to the "install" folder</span><br>
+                    <span style="color: #68d391"># 3. Run setup.exe as Administrator</span><br>
+                    cd install<br>
+                    setup.exe
+                </div>
+                <div class="warning">
+                    <strong>⚠️ Important:</strong> Run setup.exe as Administrator for proper configuration.
+                </div>
+            </div>
+
+            <div class="guide-step">
+                <div class="step-number">3</div>
+                <h3>Start LocNetServe</h3>
+                <p>You have two options to start the server:</p>
+                <div class="code-block">
+                    <span style="color: #68d391"># Option 1: Using GUI</span><br>
+                    <span style="color: #68d391"># - Go to main locnetserve folder</span><br>
+                    <span style="color: #68d391"># - Double-click locnetserve.exe</span><br><br>
+                    
+                    <span style="color: #68d391"># Option 2: Using CLI</span><br>
+                    <span style="color: #68d391"># - Go to bin folder</span><br>
+                    <span style="color: #68d391"># - Double-click lns.exe</span><br>
+                    <span style="color: #68d391"># - Then type: lns start</span>
+                </div>
+                <div class="tip">
+                    <strong>💡 Pro Tip:</strong> Use <code style="color: var(--primary)">lns start all</code> to start all services (Apache, MySQL).
+                </div>
+            </div>
+
+            <div class="guide-step">
+                <div class="step-number">4</div>
+                <h3>Create Your First Project</h3>
+                <p>Manually create a new project folder in the www directory:</p>
+                <div class="code-block">
+                    <span style="color: #68d391"># Navigate to www folder</span><br>
+                    cd locnetserve\www<br><br>
+                    <span style="color: #68d391"># Create your project folder</span><br>
+                    mkdir myproject<br><br>
+                    <span style="color: #68d391"># Start working in your project folder</span><br>
+                    cd myproject
+                </div>
+                <p>Place your PHP, HTML, CSS, and JavaScript files in this folder.</p>
+            </div>
+
+            <div class="guide-step">
+                <div class="step-number">5</div>
+                <h3>Access Your Project</h3>
+                <p>Access your project through the browser:</p>
+                <div class="code-block">
+                    <span style="color: #68d391"># Access via localhost</span><br>
+                    http://localhost/myproject<br><br>
+                    <span style="color: #68d391"># Or create virtual host via dashboard</span><br>
+                    http://localhost/dashboard
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>🔧 CLI Tools Reference</h2>
+            <p>Discover all available CLI commands using the help system:</p>
+            
+            <div class="code-block">
+                <span style="color: #68d391"># Main help command</span><br>
+                lns help<br><br>
+                
+                <span style="color: #68d391"># Category-specific help</span><br>
+                lns help core<br>
+                lns help apache<br>
+                lns help php<br>
+                lns help mysql<br>
+                lns help utils<br>
+                lns help vhosts<br><br>
+                
+                <span style="color: #68d391"># Virtual hosts commands</span><br>
+                lns -vh show<br>
+                lns -vh open myproject.local
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>🎯 Access Methods</h2>
+            <p>LocNetServe provides multiple ways to access and manage your server:</p>
+            
+            <div class="access-grid">
+                <div class="access-card">
+                    <div class="feature-icon">🖥️</div>
+                    <h3>Web Dashboard</h3>
+                    <p>Full graphical interface for monitoring and virtual host management</p>
+                    <p><strong>URL:</strong> http://localhost/dashboard</p>
+                </div>
+                
+                <div class="access-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>CLI Commands</h3>
+                    <p>Command-line interface for power users and automation</p>
+                    <p><strong>Prefix:</strong> <code>lns</code></p>
+                </div>
+                
+                <div class="access-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>System Tray Menu</h3>
+                    <p>Right-click on LocNetServe system tray icon for quick access menu</p>
+                    <p><strong>Look for:</strong> LocNetServe icon in system tray</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>🌐 Virtual Hosts Management</h2>
+            <p>Manage your virtual hosts through the web dashboard:</p>
+            
+            <table class="command-table">
+                <thead>
+                    <tr>
+                        <th>Step</th>
+                        <th>Action</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Access Dashboard</td>
+                        <td>Go to <code>http://localhost/dashboard</code></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Navigate to Virtual Hosts</td>
+                        <td>Click on "Virtual Hosts" section</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Create New Host</td>
+                        <td>Click "Add New Virtual Host"</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Configure</td>
+                        <td>Enter domain name and project path</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="tip">
+                <strong>💡 CLI Commands for Virtual Hosts:</strong><br>
+                <code>lns -vh show</code> - List all virtual hosts<br>
+                <code>lns -vh open &lt;vhost&gt;</code> - Open virtual host in browser
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>🔧 Common Commands</h2>
+            
+            <div class="guide-step">
+                <h3>Service Management</h3>
+                <div class="code-block">
+                    <span style="color: #68d391"># Start/Stop/Restart services</span><br>
+                    lns start all<br>
+                    lns stop all<br>
+                    lns restart all<br><br>
+                    
+                    <span style="color: #68d391"># Individual service control</span><br>
+                    lns start apache<br>
+                    lns stop mysql<br>
+                    lns restart dashboard<br><br>
+                    
+                    <span style="color: #68d391"># Check service status</span><br>
+                    lns status<br>
+                    lns status --detailed
+                </div>
+            </div>
+
+            <div class="guide-step">
+                <h3>Utility Commands</h3>
+                <div class="code-block">
+                    <span style="color: #68d391"># View logs</span><br>
+                    lns logs apache<br>
+                    lns logs mysql<br>
+                    lns logs --tail<br><br>
+                    
+                    <span style="color: #68d391"># System information</span><br>
+                    lns info<br>
+                    lns info --system<br><br>
+                    
+                    <span style="color: #68d391"># Backup and restore</span><br>
+                    lns backup create<br>
+                    lns backup list<br>
+                    lns backup restore backup_name
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="support-section">
+                <h2>📧 Need Help?</h2>
+                <p>We offer free support for all LocNetServe users!</p>
+                <p>Send us an email and we'll help you get started:</p>
+                <a href="mailto:locnetserve@gmail.com" class="support-email">locnetserve@gmail.com</a>
+                <p style="margin-top: 20px;">Our team typically responds within 24 hours.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="next-steps">
+                <h2>🎉 Ready for More?</h2>
+                <p>Now that you're familiar with the basics, explore these advanced topics:</p>
+                <p>
+                    <a href="../tutorials/">View Tutorials</a> • 
+                    <a href="../features/">Explore Features</a> • 
+                    <a href="../api/">API Reference</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="../../assets/logo1.png" alt="LocNetServe" class="footer-logo-img">
+                    </div>
+                    <p>Complete local web server for Windows developers</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <a href="../">Documentation Home</a>
+                    <a href="../installation/">Installation Guide</a>
+                    <a href="../tutorials/">Tutorials</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <a href="https://github.com/sassisouid/locnetserve">GitHub</a>
+                    <a href="https://github.com/sassisouid/locnetserve/issues">Report Issues</a>
+                    <a href="https://github.com/sassisouid/locnetserve/discussions">Discussions</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 LocNetServe. Open source MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
