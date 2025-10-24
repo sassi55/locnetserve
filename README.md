@@ -53,8 +53,8 @@ LocNetServe is the **all-in-one local web server** that eliminates the complexit
 
 ### 🖥️ **Complete Web Stack**
 - **Apache 2.4.65** - Industry-standard web server
-- **MySQL 8.0.34** - Robust database management
-- **PHP 8.2.8** - Latest PHP with common extensions
+- **MySQL 9.4.0** - Robust database management
+- **PHP 8.2.29** - Latest PHP with common extensions
 - **phpMyAdmin** - Web-based database management
 
 ### 🎛️ **Multiple Control Interfaces**
